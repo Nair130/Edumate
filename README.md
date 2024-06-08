@@ -13,6 +13,28 @@ The Study Schedule feature generates a study schedule based on the user's study 
 ### Text Recognizer
 The Text Recognizer feature enables users to upload PDF documents and extract text from them. It utilizes PDF.js to parse PDF documents and extract text content, which can then be displayed for easy reference.
 
+## Requirements
+
+To run this project locally, you need the following:
+
+- **XAMPP:** A local server solution that includes Apache, MySQL, and PHP. You can download it from [here](https://www.apachefriends.org/index.html).
+
+## Installation
+
+1. Install XAMPP on your local machine.
+2. Clone this repository to your local machine using `git clone https://github.com/yourusername/EduMate.git`.
+3. Place the project files in the `htdocs` directory of your XAMPP installation.
+4. Start the Apache and MySQL services in XAMPP.
+5. Open your web browser and navigate to `http://localhost/EduMate` to access the application.
+
+## Usage
+
+1. After setting up the project, you can access the different features of EduMate using the navigation links provided.
+2. Use the Study Planner to create personalized study plans by specifying subjects, topics, deadlines, and estimated study time.
+3. View your scheduled study plans in the Study Schedule section, which provides detailed timings for each study session.
+4. Utilize the Text Recognizer to extract text from PDF documents, making them searchable and editable.
+5. Explore other features like Flashcards, Material Organizer, Flashcard Generator, and Exam Tracker to enhance your learning experience.
+
 ## Usage
 
 ### Study Planner
