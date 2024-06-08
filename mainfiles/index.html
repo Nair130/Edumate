@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduMate</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-blue-600 text-white py-4">
+    <header class="bg-gray-800 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-3xl font-bold">EduMate</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#study-planner" class="hover:underline">Study Planner</a></li>
+                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
+                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
                     <li><a href="#lecture-summarizer" class="hover:underline">Lecture Summarizer</a></li>
                     <li><a href="#flashcards" class="hover:underline">Flashcards</a></li>
                     <li><a href="#material-organizer" class="hover:underline">Material Organizer</a></li>
@@ -33,7 +47,7 @@
         <section id="lecture-summarizer" class="my-10">
             <h2 class="text-2xl font-bold mb-4">AI Lecture Summarizer</h2>
             <p>Transcribe and summarize recorded lectures into key points.</p>
-            <a href="lecture-summarizer.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Lecture Summarizer</a>
+            <a href="text recognizer.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Lecture Summarizer</a>
         </section>
         
         <section id="flashcards" class="my-10">

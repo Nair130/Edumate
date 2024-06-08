@@ -3,64 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material Organizer - EduMate</title>
+    <title>Course Material Organizer</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header class="bg-blue-600 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">EduMate</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:underline">Home</a></li>
-                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
-                    <li><a href="lecture-summarizer.html" class="hover:underline">Lecture Summarizer</a></li>
-                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
-                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
-                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
-                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <main class="container mx-auto py-10">
-        <h2 class="text-2xl font-bold mb-4">Course Material Organizer</h2>
-        
-        <form id="material-organizer-form" class="bg-white p-6 rounded shadow-md" enctype="multipart/form-data">
-            <div class="mb-4">
-                <label for="material" class="block text-sm font-medium text-gray-700">Upload Material</label>
-                <input type="file" id="material" name="material" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-            </div>
-            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Upload</button>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Course Material Organizer</h1>
+        <form id="uploadForm" class="mb-4">
+            <label class="block mb-2">
+                <span class="text-gray-700">Select Document Type:</span>
+                <select id="documentType" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    <option value="lecture-notes">Lecture Notes</option>
+                    <option value="assignments">Assignments</option>
+                    <option value="readings">Readings</option>
+                </select>
+            </label>
+            <label class="block mb-2">
+                <span class="text-gray-700">Select Subject:</span>
+                <select id="subject" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="literature">Literature</option>
+                </select>
+            </label>
+            <label class="block mb-2">
+                <span class="text-gray-700">Upload Document:</span>
+                <input type="file" id="fileInput" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+            </label>
+            <button type="button" onclick="uploadDocument()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">Upload</button>
         </form>
-        
-        <div id="material-list" class="mt-10">
-            <h3 class="text-xl font-bold mb-4">Uploaded Materials</h3>
-            <ul class="list-disc pl-5">
-                <!-- Uploaded materials will be dynamically added here -->
-            </ul>
+        <div class="mb-4">
+            <input type="text" id="searchInput" oninput="filterDocuments()" class="block w-full p-2 border border-gray-300 rounded-md" placeholder="Search documents...">
         </div>
-    </main>
-    
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 EduMate. All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <script>
-        document.getElementById('material-organizer-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Get the uploaded file
-            const material = document.getElementById('material').files[0];
-            const materialList = document.querySelector('#material-list ul');
-            
-            // Simulate file upload and add to list
-            const listItem = document.createElement('li');
-            listItem.textContent = material.name;
-            materialList.appendChild(listItem);
-        });
-    </script>
+        <div id="documentList" class="mt-4"></div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>

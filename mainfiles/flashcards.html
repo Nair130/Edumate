@@ -5,16 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards - EduMate</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-blue-600 text-white py-4">
+    <header class="bg-gray-800 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-3xl font-bold">EduMate</h1>
             <nav>
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:underline">Home</a></li>
                     <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
-                    <li><a href="lecture-summarizer.html" class="hover:underline">Lecture Summarizer</a></li>
+                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
+                    <li><a href="text recognizer.html" class="hover:underline">Lecture Summarizer</a></li>
                     <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
                     <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
                     <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
@@ -62,8 +76,9 @@
             const flashcardItem = document.createElement('div');
             flashcardItem.className = 'bg-white p-4 rounded shadow-md';
             flashcardItem.innerHTML = `
-                <p class="font-bold">${question}</p>
-                <p>${answer}</p>
+                <a href="flashcard-detail.html?question=${encodeURIComponent(question)}&answer=${encodeURIComponent(answer)}" class="no-underline">
+                    <p class="font-bold">${question}</p>
+                </a>
             `;
             flashcardsContainer.appendChild(flashcardItem);
             
@@ -71,5 +86,6 @@
             document.getElementById('flashcard-form').reset();
         });
     </script>
+    
 </body>
 </html>
