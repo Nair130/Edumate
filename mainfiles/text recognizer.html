@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Text Extractor - EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">EduMate</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-10">
+        <input type="file" id="pdf-file" accept=".pdf" class="mb-4">
+        <div id="output-area" class="bg-white border-gray-300 rounded-md shadow-sm p-4 mt-4"></div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('pdf-file').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const typedarray = new Uint8Array(this.result);
+                    const pdfData = typedarray.buffer;
+                    extractTextFromPDF(pdfData);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        });
+
+        function extractTextFromPDF(pdfData) {
+            // Convert ArrayBuffer to Uint8Array
+            const pdf = new Uint8Array(pdfData);
+
+            // Asynchronously load the PDFJS library
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js';
+            script.onload = function() {
+                // Use PDFJS to parse the PDF
+                pdfjsLib.getDocument({ data: pdf }).promise.then(function(pdfDoc) {
+                    let textContent = '';
+                    const numPages = pdfDoc.numPages;
+                    const promises = [];
+                    for (let i = 1; i <= numPages; i++) {
+                        promises.push(pdfDoc.getPage(i).then(function(page) {
+                            return page.getTextContent().then(function(content) {
+                                const textItems = content.items.map(function(item) {
+                                    return item.str;
+                                });
+                                textContent += textItems.join(' ');
+                            });
+                        }));
+                    }
+                    Promise.all(promises).then(function() {
+                        displayExtractedText(textContent);
+                    });
+                });
+            };
+            document.body.appendChild(script);
+        }
+
+        function displayExtractedText(textContent) {
+            const outputArea = document.getElementById('output-area');
+            outputArea.textContent = textContent;
+        }
+    </script>
+</body>
+</html>

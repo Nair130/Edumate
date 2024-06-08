@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Schedule - EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: grey;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">EduMate</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
+                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
+                    <li><a href="text recognizer.html" class="hover:underline">Lecture Summarizer</a></li>
+                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
+                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
+                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
+                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-10">
+        <h2 class="text-2xl font-bold mb-4">Scheduled Study Plans</h2>
+        <table id="schedule-table" class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2">Subject</th>
+                    <th class="py-2">Topic</th>
+                    <th class="py-2">Date</th>
+                    <th class="py-2">Start Time</th>
+                    <th class="py-2">End Time</th>
+                    <th class="py-2 text-center">Completed</th>
+                </tr>
+            </thead>
+            <tbody id="schedule-list">
+                <!-- Schedule will be dynamically added here -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function formatTime(date) {
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function renderSchedule() {
+            const scheduleList = document.getElementById('schedule-list');
+            scheduleList.innerHTML = '';
+
+            let savedData = JSON.parse(localStorage.getItem('studyPlans'));
+            if (!savedData || savedData.length === 0) {
+                return;
+            }
+
+            // Check if savedData contains the required properties
+            if (!savedData.studyPlans || !savedData.maxStretch || !savedData.sleepTime) {
+                console.error('Saved data does not contain required properties.');
+                return;
+            }
+
+            const { studyPlans, maxStretch, sleepTime } = savedData;
+            const currentDate = new Date();
+            const [sleepHour, sleepMinute] = sleepTime.split(':').map(Number);
+
+            studyPlans.forEach(plan => {
+                const { subject, topics, estimatedTime } = plan;
+                let remainingTime = estimatedTime;
+                let currentTime = new Date(currentDate);
+
+                topics.forEach(topic => {
+                    if (remainingTime <= 0) {
+                        return;
+                    }
+
+                    let studyDuration = Math.min(remainingTime, maxStretch);
+                    if (currentTime.getHours() >= sleepHour && currentTime.getMinutes() >= sleepMinute) {
+                        currentTime.setDate(currentTime.getDate() + 1);
+                        currentTime.setHours(0, 0, 0, 0);
+                    }
+
+                    let startTime = new Date(currentTime);
+                    let endTime = new Date(startTime.getTime() + studyDuration * 3600000);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="py-2">${subject}</td>
+                        <td class="py-2">${topic.trim()}</td>
+                        <td class="py-2">${startTime.toDateString()}</td>
+                        <td class="py-2">${formatTime(startTime)}</td>
+                        <td class="py-2">${formatTime(endTime)}</td>
+                        <td class="py-2 text-center"><input type="checkbox" class="task-checkbox"></td>
+                    `;
+                    scheduleList.appendChild(row);
+                    
+                    currentTime = endTime;
+                    remainingTime -= studyDuration;
+                });
+            });
+
+            document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.closest('tr').classList.add('completed');
+                    } else {
+                        this.closest('tr').classList.remove('completed');
+                    }
+                });
+            });
+        }
+
+        renderSchedule();
+    </script>
+</body>
+</html>

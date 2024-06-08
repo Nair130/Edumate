@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Material Organizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Course Material Organizer</h1>
+        <form id="uploadForm" class="mb-4">
+            <label class="block mb-2">
+                <span class="text-gray-700">Select Document Type:</span>
+                <select id="documentType" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    <option value="lecture-notes">Lecture Notes</option>
+                    <option value="assignments">Assignments</option>
+                    <option value="readings">Readings</option>
+                </select>
+            </label>
+            <label class="block mb-2">
+                <span class="text-gray-700">Select Subject:</span>
+                <select id="subject" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="literature">Literature</option>
+                </select>
+            </label>
+            <label class="block mb-2">
+                <span class="text-gray-700">Upload Document:</span>
+                <input type="file" id="fileInput" class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+            </label>
+            <button type="button" onclick="uploadDocument()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">Upload</button>
+        </form>
+        <div class="mb-4">
+            <input type="text" id="searchInput" oninput="filterDocuments()" class="block w-full p-2 border border-gray-300 rounded-md" placeholder="Search documents...">
+        </div>
+        <div id="documentList" class="mt-4"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
