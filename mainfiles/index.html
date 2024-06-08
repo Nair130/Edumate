@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">EduMate</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
+                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
+                    <li><a href="#lecture-summarizer" class="hover:underline">Lecture Summarizer</a></li>
+                    <li><a href="#flashcards" class="hover:underline">Flashcards</a></li>
+                    <li><a href="#material-organizer" class="hover:underline">Material Organizer</a></li>
+                    <li><a href="#flashcard-generator" class="hover:underline">Flashcard Generator</a></li>
+                    <li><a href="#exam-tracker" class="hover:underline">Exam Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container mx-auto py-10">
+        <section id="study-planner" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Personalized Study Planner</h2>
+            <p>Create customized study plans with reminders and progress tracking.</p>
+            <a href="study-planner.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Study Planner</a>
+        </section>
+        
+        <section id="lecture-summarizer" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">AI Lecture Summarizer</h2>
+            <p>Transcribe and summarize recorded lectures into key points.</p>
+            <a href="text recognizer.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Lecture Summarizer</a>
+        </section>
+        
+        <section id="flashcards" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Virtual Flashcards</h2>
+            <p>Enable creation, sharing, and practice of flashcards.</p>
+            <a href="flashcards.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Flashcards</a>
+        </section>
+        
+        <section id="material-organizer" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Course Material Organizer</h2>
+            <p>Centralize lecture notes, assignments, and readings.</p>
+            <a href="material-organizer.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Material Organizer</a>
+        </section>
+        
+        <section id="flashcard-generator" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Digital Flashcard Generator</h2>
+            <p>Automatically generate flashcards from course materials.</p>
+            <a href="flashcard-generator.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Flashcard Generator</a>
+        </section>
+        
+        <section id="exam-tracker" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Exam Preparation Tracker</h2>
+            <p>Track exam study schedules with milestones and progress analytics.</p>
+            <a href="exam-tracker.html" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded">Go to Exam Tracker</a>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
