@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner - EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">EduMate</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
+                    <li><a href="lecture-summarizer.html" class="hover:underline">Lecture Summarizer</a></li>
+                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
+                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
+                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
+                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container mx-auto py-10">
+        <h2 class="text-2xl font-bold mb-4">Personalized Study Planner</h2>
+        
+        <form id="study-planner-form" class="bg-white p-6 rounded shadow-md">
+            <div class="mb-4">
+                <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                <input type="text" id="subject" name="subject" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div class="mb-4">
+                <label for="topics" class="block text-sm font-medium text-gray-700">Topics</label>
+                <textarea id="topics" name="topics" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="deadline" class="block text-sm font-medium text-gray-700">Deadline</label>
+                <input type="date" id="deadline" name="deadline" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Create Plan</button>
+        </form>
+        
+        <div id="reminders" class="mt-10">
+            <h3 class="text-xl font-bold mb-4">Reminders</h3>
+            <ul id="reminders-list" class="list-disc pl-5">
+                <!-- Reminders will be dynamically added here -->
+            </ul>
+        </div>
+        
+        <div id="progress-tracking" class="mt-10">
+            <h3 class="text-xl font-bold mb-4">Progress Tracking</h3>
+            <ul id="progress-list" class="list-disc pl-5">
+                <!-- Progress will be dynamically added here -->
+            </ul>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('study-planner-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form values
+            const subject = document.getElementById('subject').value;
+            const topics = document.getElementById('topics').value;
+            const deadline = document.getElementById('deadline').value;
+            
+            // Add to reminders list
+            const remindersList = document.getElementById('reminders-list');
+            const reminderItem = document.createElement('li');
+            reminderItem.textContent = `Study ${subject} - Topics: ${topics} by ${deadline}`;
+            remindersList.appendChild(reminderItem);
+            
+            // Add to progress tracking list
+            const progressList = document.getElementById('progress-list');
+            const progressItem = document.createElement('li');
+            progressItem.textContent = `Started studying ${subject} - Topics: ${topics}`;
+            progressList.appendChild(progressItem);
+            
+            // Clear form
+            document.getElementById('study-planner-form').reset();
+        });
+    </script>
+</body>
+</html>

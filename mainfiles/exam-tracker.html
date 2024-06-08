@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Tracker - EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">EduMate</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
+                    <li><a href="lecture-summarizer.html" class="hover:underline">Lecture Summarizer</a></li>
+                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
+                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
+                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
+                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container mx-auto py-10">
+        <h2 class="text-2xl font-bold mb-4">Exam Preparation Tracker</h2>
+        
+        <form id="exam-tracker-form" class="bg-white p-6 rounded shadow-md">
+            <div class="mb-4">
+                <label for="exam" class="block text-sm font-medium text-gray-700">Exam</label>
+                <input type="text" id="exam" name="exam" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div class="mb-4">
+                <label for="study-plan" class="block text-sm font-medium text-gray-700">Study Plan</label>
+                <textarea id="study-plan" name="study-plan" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="milestones" class="block text-sm font-medium text-gray-700">Milestones</label>
+                <textarea id="milestones" name="milestones" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Track Preparation</button>
+        </form>
+        
+        <div id="progress-analytics" class="mt-10">
+            <h3 class="text-xl font-bold mb-4">Progress Analytics</h3>
+            <ul id="analytics-list" class="list-disc pl-5">
+                <!-- Progress analytics will be dynamically added here -->
+            </ul>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('exam-tracker-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form values
+            const exam = document.getElementById('exam').value;
+            const studyPlan = document.getElementById('study-plan').value;
+            const milestones = document.getElementById('milestones').value;
+            
+            // Add to progress analytics list
+            const analyticsList = document.getElementById('analytics-list');
+            const analyticsItem = document.createElement('li');
+            analyticsItem.textContent = `Exam: ${exam}, Study Plan: ${studyPlan}, Milestones: ${milestones}`;
+            analyticsList.appendChild(analyticsItem);
+            
+            // Clear form
+            document.getElementById('exam-tracker-form').reset();
+        });
+    </script>
+</body>
+</html>
