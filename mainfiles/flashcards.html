@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - EduMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="Homepage.html" class="flex items-center text-white">
+                <img src="images/logo3.jpg" alt="Studypro.net Logo" width="30" height="30" class="mr-2">
+                <span class="font-semibold">EduMate</span>
+            </a>
+            <button class="block lg:hidden text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div class="hidden lg:flex lg:items-center lg:w-auto">
+                <div class="text-sm">
+                    <a href="landingPage.html" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-10">
+                        Home
+                    </a>
+                    <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-10">
+                        About
+                    </a>
+                    <a href="services.html" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400">
+                        Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main class="container mx-auto py-10">
+        <h2 class="text-2xl font-bold mb-4">Virtual Flashcards</h2>
+        
+        <form id="flashcard-form" class="bg-white p-6 rounded shadow-md">
+            <div class="mb-4">
+                <label for="question" class="block text-sm font-medium text-gray-700">Question</label>
+                <input type="text" id="question" name="question" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div class="mb-4">
+                <label for="answer" class="block text-sm font-medium text-gray-700">Answer</label>
+                <input type="text" id="answer" name="answer" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Add Flashcard</button>
+        </form>
+        
+        <div id="flashcards-container" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Flashcards will be dynamically added here -->
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduMate. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('flashcard-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form values
+            const question = document.getElementById('question').value;
+            const answer = document.getElementById('answer').value;
+            
+            // Add to flashcards container
+            const flashcardsContainer = document.getElementById('flashcards-container');
+            const flashcardItem = document.createElement('div');
+            flashcardItem.className = 'bg-white p-4 rounded shadow-md';
+            flashcardItem.innerHTML = `
+                <a href="flashcard-detail.html?question=${encodeURIComponent(question)}&answer=${encodeURIComponent(answer)}" class="no-underline">
+                    <p class="font-bold">${question}</p>
+                </a>
+            `;
+            flashcardsContainer.appendChild(flashcardItem);
+            
+            // Clear form
+            document.getElementById('flashcard-form').reset();
+        });
+    </script>
+    
+</body>
+</html>
