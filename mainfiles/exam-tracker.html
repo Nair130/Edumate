@@ -38,23 +38,32 @@
     </style>
 </head>
 <body>
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">EduMate</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:underline">Home</a></li>
-                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
-                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
-                    <li><a href="text recognizer.html" class="hover:underline">Lecture Summarizer</a></li>
-                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
-                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
-                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
-                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
-                </ul>
-            </nav>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="Homepage.html" class="flex items-center text-white">
+                <img src="images/logo3.jpg" alt="Studypro.net Logo" width="30" height="30" class="mr-2">
+                <span class="font-semibold">EduMate</span>
+            </a>
+            <button class="block lg:hidden text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div class="hidden lg:flex lg:items-center lg:w-auto">
+                <div class="text-sm">
+                    <a href="landingPage.html" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-10">
+                        Home
+                    </a>
+                    <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-10">
+                        About
+                    </a>
+                    <a href="services.html" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400">
+                        Services
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
     
     <main class="container mx-auto py-10">
         <h2 class="text-2xl font-bold mb-4">Exam Preparation Tracker</h2>

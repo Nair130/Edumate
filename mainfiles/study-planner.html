@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Planner - EduMate</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         table {
             border-collapse: collapse;
@@ -24,74 +24,90 @@
             display: flex;
             flex-direction: column;
         }
-
         main {
             flex: 1;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .navbar-dark .navbar-nav .nav-link.active,
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: white;
+        }
+        .navbar-brand img {
+            width: 120%; /* Set your desired width */
+            height: 60px;
         }
     </style>
 </head>
 <body>
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">EduMate</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:underline">Home</a></li>
-                    <li><a href="study-planner.html" class="hover:underline">Study Planner</a></li>
-                    <li><a href="study-schedule.html" class="hover:underline">View Schedule</a></li>
-                    <li><a href="text recognizer.html" class="hover:underline">Lecture Summarizer</a></li>
-                    <li><a href="flashcards.html" class="hover:underline">Flashcards</a></li>
-                    <li><a href="material-organizer.html" class="hover:underline">Material Organizer</a></li>
-                    <li><a href="flashcard-generator.html" class="hover:underline">Flashcard Generator</a></li>
-                    <li><a href="exam-tracker.html" class="hover:underline">Exam Tracker</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Homepage.html">
+                <img src="images/logo3.jpg" alt="Studypro.net Logo" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="landingPage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study-schedule.html">Schedule</a>
+                    </li>
                 </ul>
-            </nav>
+            </div>
         </div>
-    </header>
-    
-    <main class="container mx-auto py-10">
+    </nav>
+    <main class="container py-5">
         <h2 class="text-2xl font-bold mb-4">Personalized Study Planner</h2>
-        
         <form id="study-planner-form" class="bg-white p-6 rounded shadow-md">
             <div id="subjects-container">
                 <div class="subject-form mb-6">
                     <div class="mb-4">
-                        <label for="subject-0" class="block text-sm font-medium text-gray-700">Subject</label>
-                        <input type="text" id="subject-0" name="subject" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        <label for="subject-0" class="form-label">Subject</label>
+                        <input type="text" id="subject-0" name="subject" class="form-control">
                     </div>
                     <div class="mb-4">
-                        <label for="topics-0" class="block text-sm font-medium text-gray-700">Topics (comma separated)</label>
-                        <textarea id="topics-0" name="topics" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                        <label for="topics-0" class="form-label">Topics (comma separated)</label>
+                        <textarea id="topics-0" name="topics" class="form-control"></textarea>
                     </div>
                     <div class="mb-4">
-                        <label for="deadline-0" class="block text-sm font-medium text-gray-700">Deadline</label>
-                        <input type="date" id="deadline-0" name="deadline" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        <label for="deadline-0" class="form-label">Deadline</label>
+                        <input type="date" id="deadline-0" name="deadline" class="form-control">
                     </div>
                     <div class="mb-4">
-                        <label for="estimated-time-0" class="block text-sm font-medium text-gray-700">Estimated Time (hours)</label>
-                        <input type="number" id="estimated-time-0" name="estimated-time" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        <label for="estimated-time-0" class="form-label">Estimated Time (hours)</label>
+                        <input type="number" id="estimated-time-0" name="estimated-time" class="form-control">
                     </div>
                 </div>
             </div>
-            <button type="button" id="add-subject-button" class="bg-blue-600 text-white py-2 px-4 rounded mb-4">Add Another Subject</button>
+            <button type="button" id="add-subject-button" class="btn btn-primary mb-4">Add Another Subject</button>
             <div class="mb-4">
-                <label for="max-stretch" class="block text-sm font-medium text-gray-700">Max Time per Session (hours)</label>
-                <input type="number" id="max-stretch" name="max-stretch" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <label for="max-stretch" class="form-label">Max Time per Session (hours)</label>
+                <input type="number" id="max-stretch" name="max-stretch" class="form-control">
             </div>
             <div class="mb-4">
-                <label for="sleep-time" class="block text-sm font-medium text-gray-700">Sleep Time (e.g., 23:00)</label>
-                <input type="time" id="sleep-time" name="sleep-time" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <label for="sleep-time" class="form-label">Sleep Time (e.g., 23:00)</label>
+                <input type="time" id="sleep-time" name="sleep-time" class="form-control">
             </div>
-            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Create Plan</button>
+            <button type="submit" class="btn btn-primary">Create Plan</button>
         </form>
     </main>
-    
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto text-center">
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
             <p>&copy; 2024 EduMate. All rights reserved.</p>
         </div>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let subjectCount = 1;
 
@@ -101,20 +117,20 @@
             subjectForm.className = 'subject-form mb-6';
             subjectForm.innerHTML = `
                 <div class="mb-4">
-                    <label for="subject-${subjectCount}" class="block text-sm font-medium text-gray-700">Subject</label>
-                    <input type="text" id="subject-${subjectCount}" name="subject" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    <label for="subject-${subjectCount}" class="form-label">Subject</label>
+                    <input type="text" id="subject-${subjectCount}" name="subject" class="form-control">
                 </div>
                 <div class="mb-4">
-                    <label for="topics-${subjectCount}" class="block text-sm font-medium text-gray-700">Topics (comma separated)</label>
-                    <textarea id="topics-${subjectCount}" name="topics" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    <label for="topics-${subjectCount}" class="form-label">Topics (comma separated)</label>
+                    <textarea id="topics-${subjectCount}" name="topics" class="form-control"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="deadline-${subjectCount}" class="block text-sm font-medium text-gray-700">Deadline</label>
-                    <input type="date" id="deadline-${subjectCount}" name="deadline" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    <label for="deadline-${subjectCount}" class="form-label">Deadline</label>
+                    <input type="date" id="deadline-${subjectCount}" name="deadline" class="form-control">
                 </div>
                 <div class="mb-4">
-                    <label for="estimated-time-${subjectCount}" class="block text-sm font-medium text-gray-700">Estimated Time (hours)</label>
-                    <input type="number" id="estimated-time-${subjectCount}" name="estimated-time" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    <label for="estimated-time-${subjectCount}" class="form-label">Estimated Time (hours)</label>
+                    <input type="number" id="estimated-time-${subjectCount}" name="estimated-time" class="form-control">
                 </div>`;
             subjectsContainer.appendChild(subjectForm);
             subjectCount++;
