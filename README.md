@@ -1,0 +1,1 @@
+# EduMate-hackathon-project-by-team-algorithm-alchamists
