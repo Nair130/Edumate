@@ -22,7 +22,7 @@ To run this project locally, you need the following:
 ## Installation
 
 1. Install XAMPP on your local machine.
-2. Clone this repository to your local machine using `git clone https://github.com/yourusername/EduMate.git`.
+2. Clone this repository to your local machine using `git clone https://github.com/Riyaz-021/Edumate-Hackathon_Project.git`.
 3. Place the project files in the `htdocs` directory of your XAMPP installation.
 4. Start the Apache and MySQL services in XAMPP.
 5. Open your web browser and navigate to `http://localhost/EduMate` to access the application.
