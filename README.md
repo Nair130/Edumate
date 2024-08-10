@@ -70,4 +70,4 @@ To run this project locally, you need the following:
 
 ## Credits
 
-EduMate was developed by sunar mmohammad riyaz, rishabh nair, veeramalla nitish reddy, safwaan as a project for jithack hackathon. 
+EduMate was developed by Sunar Mohammad Riyaz, Rishabh Nair, Veeramalla Nitish Reddy and  Safwaan Sharieff as a project for jithack hackathon. 
